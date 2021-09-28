@@ -1,0 +1,28 @@
+import csv
+def write_into_csv(info_list):
+    with open('student_info.csv', 'w+', newline='') as csv_file:
+        writer = csv.writer(csv_file)
+
+        if csv_file.tell() == 0:
+            writer.writerow(["Name", "Age", "Contact Number", "E-Mail ID"])
+
+        writer.writerow(info_list)
+
+condition = True
+
+while(condition):
+    student_info = input("Enter student information in the following format (Name Age COntact_Number E-Mail ID): ") 
+    print("Entered info: " + student_info)
+
+
+    student_info_list = student_info.split(' ')
+    print("Entered split up information is: " + str(student_info_list))
+
+    write_into_csv(student_info_list)
+
+    condition_check = input("Enter (yes/no) if you want to enter info for another student: ")
+    if condition_check == "yes":
+        condition = True
+    elif condition_check =="no":
+        condition = False
+        
